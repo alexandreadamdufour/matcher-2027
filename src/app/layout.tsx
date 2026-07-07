@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { AnswersProvider } from "@/lib/answers-store";
 import { Footer } from "@/components/Footer";
 import { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistration";
+import { DemoBanner } from "@/components/DemoBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
+  subsets: ["latin"],
+  weight: ["500", "600"],
+});
+
 export const metadata: Metadata = {
-  title: "matcher-2027 — Comparateur de programmes",
+  metadataBase: new URL("https://matcher-2027.vercel.app"),
+  title: {
+    default: "matcher-2027 — Comparateur de programmes",
+    template: "%s — matcher-2027",
+  },
   description:
     "Comparez vos positions à celles de candidats fictifs sur 30 thèses de la présidentielle 2027. MVP, données de test.",
   manifest: "/manifest.webmanifest",
@@ -30,7 +41,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#111111",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf8f4" },
+    { media: "(prefers-color-scheme: dark)", color: "#171613" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -43,9 +57,10 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <DemoBanner />
         <AnswersProvider>
           <div className="flex-1 flex flex-col">{children}</div>
           <Footer />
