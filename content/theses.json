@@ -1,0 +1,182 @@
+[
+  {
+    "id": "econ-1",
+    "category": "Économie",
+    "statement": "L'État doit réduire la dépense publique pour diminuer la dette nationale, y compris via une baisse des effectifs de la fonction publique.",
+    "explanation": "La dette publique française dépasse 110% du PIB. Réduire la dépense publique peut passer par une baisse des effectifs ou des budgets ministériels, ce qui affecte directement les services rendus aux usagers."
+  },
+  {
+    "id": "econ-2",
+    "category": "Économie",
+    "statement": "Le salaire minimum doit être significativement augmenté au-delà de l'inflation.",
+    "explanation": "Le SMIC est actuellement revalorisé automatiquement avec l'inflation. Une hausse au-delà de ce mécanisme augmenterait le pouvoir d'achat des bas salaires, mais est débattue quant à son effet sur l'emploi et la compétitivité des entreprises."
+  },
+  {
+    "id": "econ-3",
+    "category": "Économie",
+    "statement": "Les impôts sur les grandes entreprises doivent être augmentés pour financer les services publics.",
+    "explanation": "La fiscalité des grandes entreprises (impôt sur les sociétés, contributions exceptionnelles) est régulièrement débattue comme levier de financement des services publics, en tension avec les enjeux de compétitivité et de localisation des sièges sociaux."
+  },
+  {
+    "id": "econ-4",
+    "category": "Économie",
+    "statement": "L'âge légal de départ à la retraite doit être abaissé par rapport à son niveau actuel.",
+    "explanation": "L'âge légal a été porté à 64 ans par la réforme de 2023. Un abaissement rouvrirait la question de l'équilibre financier du système de retraites par répartition."
+  },
+  {
+    "id": "econ-5",
+    "category": "Économie",
+    "statement": "L'État doit encourager la relocalisation industrielle même si cela implique des mesures protectionnistes.",
+    "explanation": "La relocalisation vise à réduire la dépendance à des chaînes d'approvisionnement étrangères. Elle peut passer par des aides ciblées ou des mesures protectionnistes, ce qui interroge la compatibilité avec les règles du commerce international et européen."
+  },
+  {
+    "id": "intl-1",
+    "category": "International",
+    "statement": "La France doit renforcer son intégration au sein de l'Union européenne, y compris par des transferts de souveraineté supplémentaires.",
+    "explanation": "L'intégration européenne implique de déléguer certaines compétences nationales (fiscalité, défense, politique étrangère) à des instances communes, en échange d'une capacité d'action collective renforcée."
+  },
+  {
+    "id": "intl-2",
+    "category": "International",
+    "statement": "La France doit augmenter son budget de défense de manière significative.",
+    "explanation": "Le budget des armées a augmenté ces dernières années dans le cadre de la loi de programmation militaire. La question porte sur une accélération supplémentaire, dans un contexte de tensions géopolitiques en Europe."
+  },
+  {
+    "id": "intl-3",
+    "category": "International",
+    "statement": "La France doit conditionner son aide au développement au respect de critères démocratiques par les pays bénéficiaires.",
+    "explanation": "L'aide publique au développement française représente plusieurs milliards d'euros par an. Certains proposent de la conditionner à des critères de gouvernance, d'autres estiment que cela pénaliserait les populations plutôt que les gouvernements visés."
+  },
+  {
+    "id": "intl-4",
+    "category": "International",
+    "statement": "La France doit maintenir son arsenal nucléaire militaire sans réduction.",
+    "explanation": "La dissuasion nucléaire est un pilier de la doctrine de défense française depuis les années 1960. Le débat porte sur son coût, sa modernisation et sa place dans une éventuelle défense européenne commune."
+  },
+  {
+    "id": "intl-5",
+    "category": "International",
+    "statement": "Les accords de libre-échange internationaux doivent être facilités plutôt que restreints.",
+    "explanation": "Les accords de libre-échange (type Mercosur, CETA) suppriment des barrières douanières. Ils sont défendus pour leurs effets sur les exportations et critiqués pour leur impact sur certains secteurs agricoles ou environnementaux."
+  },
+  {
+    "id": "ecolo-1",
+    "category": "Écologie",
+    "statement": "La France doit interdire la vente de nouveaux véhicules thermiques avant 2035.",
+    "explanation": "Le règlement européen prévoit la fin de la vente de véhicules thermiques neufs en 2035. Le débat porte sur le calendrier, son impact sur la filière automobile française et l'accès à des véhicules électriques abordables."
+  },
+  {
+    "id": "ecolo-2",
+    "category": "Écologie",
+    "statement": "Le nucléaire civil doit être développé comme énergie principale de la transition énergétique.",
+    "explanation": "La France produit environ 65-70% de son électricité grâce au nucléaire civil. Le débat oppose les partisans d'un développement du parc nucléaire (nouveaux réacteurs) à ceux qui privilégient un mix fondé sur les énergies renouvelables."
+  },
+  {
+    "id": "ecolo-3",
+    "category": "Écologie",
+    "statement": "Une taxe carbone plus élevée doit s'appliquer aux entreprises les plus polluantes, même si cela augmente les prix à la consommation.",
+    "explanation": "La taxation du carbone vise à internaliser le coût environnemental des émissions. Une hausse peut accélérer la transition mais aussi renchérir certains produits ou services pour les consommateurs."
+  },
+  {
+    "id": "ecolo-4",
+    "category": "Écologie",
+    "statement": "L'agriculture intensive doit être davantage réglementée au profit de pratiques plus écologiques, même si cela réduit les rendements à court terme.",
+    "explanation": "L'agriculture intensive est questionnée pour son usage de pesticides et d'eau. Une réglementation plus stricte peut réduire l'empreinte environnementale mais aussi le revenu ou la compétitivité de certaines exploitations à court terme."
+  },
+  {
+    "id": "ecolo-5",
+    "category": "Écologie",
+    "statement": "Les grands projets d'infrastructure (autoroutes, aéroports) doivent être limités au nom de la protection de l'environnement.",
+    "explanation": "Certains grands projets d'infrastructure sont contestés pour leur impact sur les sols, la biodiversité ou les émissions, quand d'autres y voient un levier de désenclavement économique et de mobilité."
+  },
+  {
+    "id": "inst-1",
+    "category": "Institutions",
+    "statement": "Le mode de scrutin législatif doit intégrer une part de proportionnelle.",
+    "explanation": "Le scrutin législatif français est aujourd'hui majoritaire à deux tours. Une dose de proportionnelle viserait une meilleure représentation des différents courants politiques, au risque d'une fragmentation accrue de l'Assemblée."
+  },
+  {
+    "id": "inst-2",
+    "category": "Institutions",
+    "statement": "Le nombre de mandats consécutifs d'un même élu national doit être limité.",
+    "explanation": "Le non-cumul dans le temps (limitation du nombre de mandats successifs) vise à renouveler le personnel politique. Il est débattu pour son effet sur l'expérience et la continuité de l'action publique."
+  },
+  {
+    "id": "inst-3",
+    "category": "Institutions",
+    "statement": "Le référendum d'initiative citoyenne doit être facilité pour permettre aux citoyens de proposer des lois.",
+    "explanation": "Le référendum d'initiative partagée existant nécessite le soutien d'un nombre élevé de parlementaires et de citoyens. Le débat porte sur l'abaissement de ces seuils pour faciliter la démocratie directe."
+  },
+  {
+    "id": "inst-4",
+    "category": "Institutions",
+    "statement": "Le Sénat doit être supprimé ou profondément réformé.",
+    "explanation": "Le Sénat, chambre haute du Parlement élue au suffrage indirect, est régulièrement questionné sur son rôle, son mode d'élection et son coût, tandis que ses défenseurs soulignent son rôle de relecture législative et de représentation des territoires."
+  },
+  {
+    "id": "inst-5",
+    "category": "Institutions",
+    "statement": "Les pouvoirs du président de la République doivent être réduits au profit du Parlement.",
+    "explanation": "La Vᵉ République confère des pouvoirs importants au président (dissolution, article 49.3 via le gouvernement, nomination). Un rééquilibrage vers le Parlement est proposé par certains comme réponse à ce qu'ils jugent être une present concentration des pouvoirs."
+  },
+  {
+    "id": "soc-1",
+    "category": "Société",
+    "statement": "La légalisation encadrée du cannabis récréatif doit être mise en place.",
+    "explanation": "Plusieurs pays européens ont légalisé ou dépénalisé l'usage récréatif du cannabis sous conditions. Le débat porte sur les effets sanitaires, sécuritaires et fiscaux d'un tel encadrement en France."
+  },
+  {
+    "id": "soc-2",
+    "category": "Société",
+    "statement": "La politique migratoire doit être assouplie pour faciliter l'accueil de nouveaux arrivants.",
+    "explanation": "La politique migratoire française encadre l'entrée, le séjour et l'asile. Le débat oppose les partisans d'un accueil facilité, pour des raisons humanitaires ou économiques, à ceux qui plaident pour des critères plus restrictifs."
+  },
+  {
+    "id": "soc-3",
+    "category": "Société",
+    "statement": "La fin de vie médicalement assistée doit être autorisée pour les patients en phase terminale qui le demandent.",
+    "explanation": "La loi française actuelle autorise la sédation profonde et continue mais pas l'euthanasie ou le suicide assisté. Un débat parlementaire est en cours sur une éventuelle évolution du cadre légal."
+  },
+  {
+    "id": "soc-4",
+    "category": "Société",
+    "statement": "Les peines pour les délits liés à la sécurité du quotidien doivent être alourdies.",
+    "explanation": "Le débat sur l'échelle des peines pour les délits (vols, dégradations, violences légères) oppose les partisans d'une réponse pénale plus sévère à ceux qui privilégient la prévention et les alternatives à l'incarcération."
+  },
+  {
+    "id": "soc-5",
+    "category": "Société",
+    "statement": "La discrimination positive doit être utilisée pour favoriser l'égalité des chances dans l'accès à l'emploi et aux études.",
+    "explanation": "La discrimination positive consiste à accorder un traitement préférentiel à des groupes sous-représentés (origine sociale, géographique...). Elle est débattue au regard du principe d'égalité de traitement inscrit dans la tradition républicaine française."
+  },
+  {
+    "id": "edu-1",
+    "category": "Éducation",
+    "statement": "Le redoublement doit être réintroduit plus largement dans le système scolaire.",
+    "explanation": "Le redoublement est aujourd'hui exceptionnel en France. Ses partisans y voient un outil pour consolider les acquis, ses opposants soulignent son coût et son efficacité pédagogique contestée par plusieurs études."
+  },
+  {
+    "id": "edu-2",
+    "category": "Éducation",
+    "statement": "Les moyens alloués aux établissements situés en zones défavorisées doivent être significativement augmentés.",
+    "explanation": "Le dispositif d'éducation prioritaire (REP/REP+) alloue déjà des moyens supplémentaires à certains établissements. Le débat porte sur l'ampleur de ce renforcement et son ciblage."
+  },
+  {
+    "id": "edu-3",
+    "category": "Éducation",
+    "statement": "L'autonomie des établissements scolaires (recrutement, pédagogie) doit être renforcée.",
+    "explanation": "Une plus grande autonomie donnerait aux établissements plus de latitude sur le recrutement des équipes ou les méthodes pédagogiques, au risque, selon ses détracteurs, d'accroître les inégalités territoriales."
+  },
+  {
+    "id": "edu-4",
+    "category": "Éducation",
+    "statement": "L'enseignement privé sous contrat doit recevoir moins de financement public.",
+    "explanation": "L'enseignement privé sous contrat, qui scolarise environ 17% des élèves français, est financé en grande partie par des fonds publics en contrepartie d'obligations pédagogiques. Le débat porte sur le niveau de ce financement."
+  },
+  {
+    "id": "edu-5",
+    "category": "Éducation",
+    "statement": "Le port de l'uniforme scolaire doit être généralisé dans les établissements publics.",
+    "explanation": "Quelques expérimentations de tenue unique ont eu lieu dans des établissements publics français. Le débat porte sur ses effets supposés sur les inégalités visibles entre élèves et sur la liberté individuelle."
+  }
+]
