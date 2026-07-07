@@ -85,7 +85,9 @@ pnpm build     # build de production
   collectée.
 - Bannière permanente en pied de page rappelant qu'il s'agit d'un outil de
   comparaison, pas d'une recommandation de vote.
-- Déclaration d'intérêt de l'auteur disponible sur `/methodologie`.
+- Déclaration d'intérêt de l'auteur disponible sur `/methodologie` et `/a-propos`.
+- **Aucun outil d'analytics.** C'est un choix de produit, pas un oubli : rien
+  n'est mesuré, donc rien ne peut être ré-identifié ou revendu. Voir `/confidentialite`.
 
 ---
 
@@ -163,4 +165,7 @@ pnpm build     # production build
 - Permanent footer banner reminding users this is a comparison tool, not a
   voting recommendation.
 - The author's conflict-of-interest disclosure is available on
-  `/methodologie`.
+  `/methodologie` and `/a-propos`.
+- **No analytics whatsoever.** This is a product decision, not an oversight:
+  nothing is measured, so nothing can be re-identified or resold. See
+  `/confidentialite`.

@@ -211,6 +211,11 @@ export default function TestPage() {
           <SegmentedProgress segments={segments} />
         </div>
 
+        <p aria-live="polite" className="sr-only">
+          Thèse {index + 1} sur {activeTheses.length}, catégorie {thesis.category} :{" "}
+          {thesis.statement}
+        </p>
+
         <div key={thesis.id} className="thesis-transition flex flex-1 flex-col text-center">
           <p className="mb-4 text-xs font-medium uppercase tracking-widest text-muted-foreground">
             {thesis.category}
