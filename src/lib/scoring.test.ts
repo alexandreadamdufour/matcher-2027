@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeAffinity } from "./scoring";
+import { computeAffinity, computeUserAffinity } from "./scoring";
 import type { Candidate, Position, Thesis, UserAnswer } from "./schemas";
 
 const theses: Thesis[] = [
@@ -102,5 +102,46 @@ describe("computeAffinity", () => {
       { Écologie: 3 },
     );
     expect(ecologyAmplified.score).toBeCloseTo(25);
+  });
+});
+
+describe("computeUserAffinity", () => {
+  it("returns 100% when two people answer identically on every shared thesis", () => {
+    const a: UserAnswer[] = [
+      { thesis_id: "t1", stance: 2, weight: 1 },
+      { thesis_id: "t2", stance: -1, weight: 2 },
+    ];
+    const b: UserAnswer[] = [
+      { thesis_id: "t1", stance: 2, weight: 1 },
+      { thesis_id: "t2", stance: -1, weight: 1 },
+    ];
+
+    const result = computeUserAffinity(a, b);
+
+    expect(result.score).toBeCloseTo(100);
+    expect(result.sharedCount).toBe(2);
+  });
+
+  it("only counts theses both people answered", () => {
+    const a: UserAnswer[] = [
+      { thesis_id: "t1", stance: 2, weight: 1 },
+      { thesis_id: "t2", stance: 2, weight: 1 },
+    ];
+    const b: UserAnswer[] = [{ thesis_id: "t1", stance: 2, weight: 1 }];
+
+    const result = computeUserAffinity(a, b);
+
+    expect(result.sharedCount).toBe(1);
+    expect(result.score).toBeCloseTo(100);
+  });
+
+  it("returns 0 when there is no shared thesis", () => {
+    const a: UserAnswer[] = [{ thesis_id: "t1", stance: 2, weight: 1 }];
+    const b: UserAnswer[] = [{ thesis_id: "t2", stance: 2, weight: 1 }];
+
+    const result = computeUserAffinity(a, b);
+
+    expect(result.sharedCount).toBe(0);
+    expect(result.score).toBe(0);
   });
 });

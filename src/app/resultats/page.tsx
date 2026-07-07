@@ -11,16 +11,10 @@ import { getCandidates, getPositions, getPosition, getTheses } from "@/lib/conte
 import { computeAffinity, type CandidateResult } from "@/lib/scoring";
 import { candidateColor } from "@/lib/candidate-colors";
 import { CATEGORIES, type Candidate, type Stance } from "@/lib/schemas";
+import { STANCE_LABELS } from "@/lib/stance-labels";
 import { useCountUp } from "@/lib/use-count-up";
 import { useStaggeredReveal } from "@/lib/use-staggered-reveal";
-
-const STANCE_LABELS: Record<Stance, string> = {
-  [-2]: "Pas d'accord",
-  [-1]: "Plutôt pas d'accord",
-  [0]: "Neutre",
-  [1]: "Plutôt d'accord",
-  [2]: "D'accord",
-};
+import { encodeDuoPayload } from "@/lib/duo-encoding";
 
 const THESES = getTheses();
 const CANDIDATES = getCandidates();
@@ -36,11 +30,25 @@ export default function ResultatsPage() {
   );
 }
 
+const DUO_NAME_KEY = "matcher-2027:duo:myName";
+
 function ResultatsContent() {
   const { answers } = useAnswers();
   const searchParams = useSearchParams();
   const isExpress = searchParams.get("mode") === "express";
   const [copyState, setCopyState] = useState<"idle" | "copied">("idle");
+  const [duoCopyState, setDuoCopyState] = useState<"idle" | "copied">("idle");
+  const [duoName, setDuoName] = useState("");
+
+  useEffect(() => {
+    const stored = window.sessionStorage.getItem(DUO_NAME_KEY);
+    if (stored) setDuoName(stored);
+  }, []);
+
+  function updateDuoName(value: string) {
+    setDuoName(value);
+    window.sessionStorage.setItem(DUO_NAME_KEY, value);
+  }
 
   const results = useMemo(
     () =>
@@ -101,6 +109,29 @@ function ResultatsContent() {
     await navigator.clipboard.writeText(url);
     setCopyState("copied");
     setTimeout(() => setCopyState("idle"), 2000);
+  }
+
+  async function shareDuo() {
+    const encoded = encodeDuoPayload(answers, duoName);
+    const url = `${window.location.origin}/duo?d=${encoded}`;
+    const shareData = {
+      title: "Comparons nos réponses sur matcher-2027",
+      text: "J'ai fait le test matcher-2027, viens comparer tes réponses aux miennes.",
+      url,
+    };
+
+    if (navigator.share && navigator.canShare?.(shareData)) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch {
+        // user cancelled the native share sheet — fall through to clipboard
+      }
+    }
+
+    await navigator.clipboard.writeText(url);
+    setDuoCopyState("copied");
+    setTimeout(() => setDuoCopyState("idle"), 2000);
   }
 
   if (answers.length === 0) {
@@ -257,6 +288,42 @@ function ResultatsContent() {
           >
             Voir toutes les sources
           </Link>
+        </div>
+
+        <div className="mt-6 rounded-lg border border-border p-4">
+          <h2 className="text-sm font-semibold text-foreground">
+            Comparer avec quelqu&apos;un
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Générez un lien : la personne qui l&apos;ouvre fait le test à son
+            tour, puis vous voyez votre taux d&apos;affinité mutuel, vos
+            convergences et divergences, et vos classements côte à côte.
+          </p>
+          <label htmlFor="duo-name" className="mt-3 block text-xs text-muted-foreground">
+            Votre prénom (optionnel, inclus dans le lien que vous partagez)
+          </label>
+          <input
+            id="duo-name"
+            type="text"
+            value={duoName}
+            onChange={(e) => updateDuoName(e.target.value)}
+            maxLength={40}
+            placeholder="Vous"
+            className="mt-1 w-full max-w-xs rounded-md border border-border bg-background px-3 py-1.5 text-sm text-foreground"
+          />
+          <div className="mt-3">
+            <button
+              type="button"
+              onClick={shareDuo}
+              className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+            >
+              {duoCopyState === "copied" ? "Lien copié !" : "Comparer avec quelqu'un"}
+            </button>
+          </div>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Ce lien contient vos réponses — ne le partagez qu&apos;avec des
+            personnes de confiance.
+          </p>
         </div>
 
         {elapsedMinutes !== null && (

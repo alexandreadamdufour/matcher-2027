@@ -14,6 +14,7 @@ const POSITIONS = getPositions();
 const EXPRESS_THESES = getDiscriminatingTheses(ALL_THESES, POSITIONS, 15);
 const MODE_STORAGE_KEY = "matcher-2027:mode";
 const START_TIME_KEY = "matcher-2027:startedAt";
+const DUO_PENDING_KEY = "matcher-2027:duoPending";
 const MIDPOINT_DELAY_MS = 2600;
 
 type Mode = "full" | "express";
@@ -60,6 +61,11 @@ export default function TestPage() {
   useEffect(() => {
     if (!hasHydrated || !mode) return;
     if (index >= activeTheses.length) {
+      const duoPending = window.sessionStorage.getItem(DUO_PENDING_KEY);
+      if (duoPending) {
+        router.push(`/duo?d=${duoPending}`);
+        return;
+      }
       router.push(mode === "express" ? "/resultats?mode=express" : "/resultats");
     }
   }, [index, hasHydrated, mode, activeTheses.length, router]);

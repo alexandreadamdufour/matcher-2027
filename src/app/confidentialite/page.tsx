@@ -50,6 +50,22 @@ export default function ConfidentialitePage() {
 
         <section>
           <h2 className="text-lg font-semibold text-foreground">
+            Le mode « comparer avec quelqu&apos;un »
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
+            Ce mode génère un lien qui contient vos réponses, compressées et
+            encodées directement dans l&apos;URL — jamais sur un serveur.
+            Concrètement : la personne qui ouvre votre lien reçoit vos
+            réponses dans son propre navigateur, et la comparaison s&apos;y
+            calcule localement. Cela veut aussi dire que{" "}
+            <strong>quiconque a ce lien peut lire vos réponses</strong> : ne le
+            partagez qu&apos;avec des personnes de confiance, et évitez de le
+            publier publiquement.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-foreground">
             Code source ouvert
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-foreground/90">
