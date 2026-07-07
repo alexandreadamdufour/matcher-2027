@@ -443,6 +443,32 @@ function CandidateCard({
                 </a>{" "}
                 ({position.source_type}, {position.source_date})
               </p>
+              {position.position_versions && position.position_versions.length > 0 && (
+                <details className="mt-1.5">
+                  <summary className="cursor-pointer text-xs text-muted-foreground underline underline-offset-2">
+                    Position actualisée le {position.source_date} · voir{" "}
+                    {position.position_versions.length === 1
+                      ? "la version antérieure"
+                      : `les ${position.position_versions.length} versions antérieures`}
+                  </summary>
+                  <ul className="mt-2 flex flex-col gap-2 border-l-2 border-border pl-3">
+                    {[...position.position_versions].reverse().map((version, i) => (
+                      <li key={i} className="text-xs text-muted-foreground">
+                        {STANCE_LABELS[version.stance]} — {version.note}{" "}
+                        <a
+                          href={version.source_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline underline-offset-2"
+                        >
+                          source
+                        </a>{" "}
+                        ({version.source_date})
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              )}
             </li>
           ))}
         </ul>
