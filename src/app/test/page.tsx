@@ -13,6 +13,7 @@ const ALL_THESES = getTheses();
 const POSITIONS = getPositions();
 const EXPRESS_THESES = getDiscriminatingTheses(ALL_THESES, POSITIONS, 15);
 const MODE_STORAGE_KEY = "matcher-2027:mode";
+const START_TIME_KEY = "matcher-2027:startedAt";
 const MIDPOINT_DELAY_MS = 2600;
 
 type Mode = "full" | "express";
@@ -40,6 +41,9 @@ export default function TestPage() {
       setMode(storedMode);
     } else if (answers.length > 0) {
       setMode("full");
+    }
+    if (!window.sessionStorage.getItem(START_TIME_KEY)) {
+      window.sessionStorage.setItem(START_TIME_KEY, String(Date.now()));
     }
     setHasHydrated(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps

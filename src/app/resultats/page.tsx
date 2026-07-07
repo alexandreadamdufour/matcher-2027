@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { RadarChart } from "@/components/RadarChart";
 import { WhatIfPanel } from "@/components/WhatIfPanel";
@@ -26,6 +26,7 @@ const THESES = getTheses();
 const CANDIDATES = getCandidates();
 const POSITIONS = getPositions();
 const REVEAL_STEP_MS = 400;
+const START_TIME_KEY = "matcher-2027:startedAt";
 
 export default function ResultatsPage() {
   return (
@@ -55,6 +56,15 @@ function ResultatsContent() {
     results.slice(0, 3).map((r) => r.candidate_id),
   );
 
+  const [elapsedMinutes, setElapsedMinutes] = useState<number | null>(null);
+
+  useEffect(() => {
+    const startedAt = window.sessionStorage.getItem(START_TIME_KEY);
+    if (!startedAt) return;
+    const minutes = Math.max(1, Math.round((Date.now() - Number(startedAt)) / 60000));
+    setElapsedMinutes(minutes);
+  }, []);
+
   function toggleCandidate(id: string) {
     setSelectedIds((prev) => {
       if (prev.includes(id)) {
@@ -73,6 +83,21 @@ function ResultatsContent() {
       params.set(`s${i + 1}`, String(Math.round(r.score)));
     });
     const url = `${window.location.origin}/partage?${params.toString()}`;
+    const shareData = {
+      title: "Mon résultat matcher-2027",
+      text: "Voici mon top 3 sur matcher-2027, un comparateur indépendant (données de test).",
+      url,
+    };
+
+    if (navigator.share && navigator.canShare?.(shareData)) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch {
+        // user cancelled the native share sheet — fall through to clipboard
+      }
+    }
+
     await navigator.clipboard.writeText(url);
     setCopyState("copied");
     setTimeout(() => setCopyState("idle"), 2000);
@@ -218,9 +243,7 @@ function ResultatsContent() {
             onClick={shareTop3}
             className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
           >
-            {copyState === "copied"
-              ? "Lien copié !"
-              : "Copier le lien de partage (top 3)"}
+            {copyState === "copied" ? "Lien copié !" : "Partager mon résultat"}
           </button>
           <Link
             href="/test"
@@ -235,6 +258,13 @@ function ResultatsContent() {
             Voir toutes les sources
           </Link>
         </div>
+
+        {elapsedMinutes !== null && (
+          <p className="mt-8 text-xs text-muted-foreground">
+            Ce test vous a pris {elapsedMinutes} minute{elapsedMinutes > 1 ? "s" : ""}.
+            Un bulletin de vote prend 2 minutes. Les deux comptent.
+          </p>
+        )}
       </div>
     </main>
   );
