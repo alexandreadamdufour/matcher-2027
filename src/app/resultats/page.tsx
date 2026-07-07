@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { RadarChart } from "@/components/RadarChart";
+import { WhatIfPanel } from "@/components/WhatIfPanel";
 import { useAnswers } from "@/lib/answers-store";
 import { getCandidates, getPositions, getPosition, getTheses } from "@/lib/content";
 import { computeAffinity, type CandidateResult } from "@/lib/scoring";
@@ -188,6 +189,14 @@ function ResultatsContent() {
             <RadarChart axes={[...CATEGORIES]} series={radarSeries} />
           </div>
         </div>
+
+        <WhatIfPanel
+          answers={answers}
+          candidates={CANDIDATES}
+          positions={POSITIONS}
+          theses={THESES}
+          baselineResults={results}
+        />
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <button
