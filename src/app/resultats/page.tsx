@@ -5,6 +5,7 @@ import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { RadarChart } from "@/components/RadarChart";
 import { WhatIfPanel } from "@/components/WhatIfPanel";
+import { ConvergenceMatrix } from "@/components/ConvergenceMatrix";
 import { useAnswers } from "@/lib/answers-store";
 import { getCandidates, getPositions, getPosition, getTheses } from "@/lib/content";
 import { computeAffinity, type CandidateResult } from "@/lib/scoring";
@@ -197,6 +198,19 @@ function ResultatsContent() {
           theses={THESES}
           baselineResults={results}
         />
+
+        <div className="mt-10">
+          <h2 className="text-lg font-semibold text-foreground">
+            Où les candidats sont d&apos;accord
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Les 30 thèses, triées des plus clivantes aux plus consensuelles
+            entre les {CANDIDATES.length} candidats.
+          </p>
+          <div className="mt-4">
+            <ConvergenceMatrix theses={THESES} candidates={CANDIDATES} positions={POSITIONS} />
+          </div>
+        </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <button
