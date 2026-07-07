@@ -1,10 +1,85 @@
 # ÉTAT — matcher-2027
 
-Dernière mise à jour : 2026-07-07.
+Dernière mise à jour : 2026-07-07 (v2 — produit civique de référence).
 
 - Dépôt : https://github.com/alexandreadamdufour/matcher-2027 (public)
 - Déploiement : https://matcher-2027.vercel.app (production, auto-déploiement
   branché sur `main`)
+
+## v2 — produit civique de référence (même journée)
+
+Évolution majeure du MVP initial (sections ci-dessous, conservées telles
+quelles) vers un produit visuellement et fonctionnellement abouti, tout en
+gardant les 4 candidats et 30 thèses strictement fictifs.
+
+**Fait (v2) :**
+
+- Refonte visuelle éditoriale : palette papier/encre/accent bleu-encre
+  (`src/app/globals.css`), police serif Source Serif 4 réservée à l'énoncé
+  des thèses et aux titres H1 (un seul « moment serif » par écran), couleurs
+  candidats désaturées (`src/lib/candidate-colors.ts`).
+- Questionnaire repensé (`/test`) : thèse en grande serif centrée, disclosure
+  « Pourquoi cette question ? » (réutilise `thesis.explanation`), barre de
+  progression segmentée par catégorie (`SegmentedProgress`), retour arrière
+  avec conservation des réponses, raccourcis clavier (1/2/3, flèches, i),
+  écran de mi-parcours après la thèse 15 (mode complet uniquement), mode
+  express (15 thèses les plus discriminantes, calculées par variance des
+  positions candidats — `src/lib/express-mode.ts`) avec écran de choix de
+  format au démarrage.
+- Résultats (`/resultats`) : révélation progressive dernier→premier avec
+  count-up des scores (`useStaggeredReveal`, `useCountUp`, respectent
+  `prefers-reduced-motion`), carte candidat enrichie (mini-barres par
+  catégorie, top 3 accords/désaccords sourcés), radar comparatif avec
+  sélection de 1 à 3 candidats et tooltips natifs par point, matrice de
+  convergence thèse × candidats triée des plus clivantes aux plus
+  consensuelles (`ConvergenceMatrix`), panneau « Et si ? » de repondération
+  par catégorie avec reclassement en temps réel (`WhatIfPanel`, nécessite le
+  paramètre `categoryMultipliers` ajouté à `computeAffinity`).
+- Confiance : bandeau permanent « version de démonstration » en tête de
+  page, pages dédiées `/confidentialite` (schéma du parcours des données) et
+  `/a-propos` (bio + disclosure Horizons dès la 2e phrase + gouvernance
+  prévue), image OG éditoriale régénérée avec police serif chargée à la
+  volée, bouton de partage utilisant la Web Share API sur mobile (repli
+  clipboard sur desktop), ligne de fin de test (« Ce test vous a pris X
+  minutes... ») basée sur un timestamp `sessionStorage`.
+- Finitions : `sitemap.ts`/`robots.ts`, métadonnées par route (layouts dédiés
+  pour `/test` et `/resultats`, client components), anneau de focus clavier
+  cohérent (`*:focus-visible` global), région `aria-live` annonçant le
+  changement de thèse, migration des pages restantes (`/`, `/sources`,
+  `/methodologie`, `/partage`, `Footer`) vers les tokens de couleur
+  sémantiques pour la cohérence visuelle.
+- `pnpm build`, `pnpm lint`, `tsc --noEmit` et `pnpm test` (4 tests, dont un
+  nouveau sur `categoryMultipliers`) passent tous sans erreur ; vérifié en
+  production sur Vercel (toutes les routes + `/api/og` renvoient 200).
+
+**Décisions prises (v2) :**
+
+- **Pas de Recharts, radar/heatmap faits main en SVG/HTML** : le radar
+  existant (SVG maison) et une table CSS suffisaient aux besoins (overlay de
+  séries, tooltips via `<title>`), évitant une dépendance supplémentaire
+  alors que le brief demandait explicitement de ne pas alourdir le stack.
+- **OG image : police chargée à la volée depuis Google Fonts dans la route
+  edge** plutôt que bundlée, avec repli silencieux sur une police système si
+  le fetch échoue — évite d'embarquer un fichier de police dans le dépôt.
+  Un bug Satori (« Expected `<div>` to have explicit display: flex ») a été
+  détecté et corrigé via un test réel de la route (build de prod +
+  `pnpm start` + `curl`, sans navigateur) avant le déploiement.
+- **Matrice de convergence triée par divergence décroissante** (thèses les
+  plus clivantes d'abord) plutôt que par catégorie ou ordre alphabétique :
+  c'est l'angle le plus intéressant éditorialement (« où les candidats
+  s'opposent le plus ») et documenté comme tel dans l'UI.
+- **`categoryMultipliers` optionnel sur `computeAffinity`** plutôt qu'une
+  fonction de scoring séparée pour le panneau « Et si ? » : garde un seul
+  moteur de scoring testé, rétrocompatible (paramètre optionnel, défaut 1).
+- **Aucune vérification navigateur effectuée pour ce sprint v2**, à la
+  demande explicite de l'utilisateur en cours de session : validation
+  limitée à `tsc`, `eslint`, `vitest`, `next build`, et à des vérifications
+  `curl` en local et en production (y compris un test réel de l'image OG
+  edge qui a permis de détecter le bug Satori ci-dessus).
+
+---
+
+## v1 — MVP initial
 
 ## Fait
 
