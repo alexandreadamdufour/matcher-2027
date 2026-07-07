@@ -13,20 +13,20 @@ export default function MethodologiePage() {
     <main className="flex flex-1 flex-col px-6 py-10">
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-8">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
+          <h1 className="font-serif text-2xl font-medium text-foreground">
             Méthodologie
           </h1>
-          <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+          <p className="mt-2 text-sm text-muted-foreground">
             Comment sont construites les thèses, les positions et le score
             d&apos;affinité de matcher-2027.
           </p>
         </div>
 
         <section>
-          <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+          <h2 className="text-lg font-semibold text-foreground">
             Statut du projet — MVP, données fictives
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
             Ce site est un prototype technique (MVP). Les {candidateCount}{" "}
             candidats et les {thesisCount} thèses actuellement disponibles
             sont des <strong>données fictives</strong>, créées pour valider
@@ -38,10 +38,10 @@ export default function MethodologiePage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+          <h2 className="text-lg font-semibold text-foreground">
             Grille de positionnement
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
             Chaque thèse est un énoncé neutre et symétrique sur lequel un
             candidat peut se positionner sur une échelle à 5 niveaux, de
             « pas d&apos;accord » (-2) à « d&apos;accord » (+2), en passant par
@@ -51,7 +51,7 @@ export default function MethodologiePage() {
             officiel, vote parlementaire ou interview, avec une citation, une
             URL et une date. Les règles de rédaction des thèses sont détaillées
             dans le fichier{" "}
-            <code className="rounded bg-neutral-100 px-1 py-0.5 text-xs dark:bg-neutral-900">
+            <code className="rounded bg-muted px-1 py-0.5 text-xs">
               content/thesis-guidelines.md
             </code>{" "}
             du dépôt, qui s&apos;inspire des lignes éditoriales du Wahl-O-Mat
@@ -60,10 +60,10 @@ export default function MethodologiePage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+          <h2 className="text-lg font-semibold text-foreground">
             Calcul du score d&apos;affinité
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
             Pour chaque thèse à laquelle vous répondez, on calcule un écart
             normalisé entre votre position et celle du candidat (de 0, écart
             maximal, à 1, accord parfait). Les thèses passées ne comptent pas
@@ -78,10 +78,10 @@ export default function MethodologiePage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+          <h2 className="text-lg font-semibold text-foreground">
             Confidentialité
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
             L&apos;intégralité du calcul se fait dans votre navigateur. Vos
             réponses sont conservées uniquement dans la mémoire de session de
             votre navigateur (sessionStorage) le temps de votre visite et ne
@@ -92,10 +92,10 @@ export default function MethodologiePage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+          <h2 className="text-lg font-semibold text-foreground">
             Gouvernance et transparence
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+          <p className="mt-2 text-sm leading-relaxed text-foreground/90">
             Le code source, les thèses, les positions et leurs sources sont
             publics et versionnés dans le dépôt du projet. Toute correction ou
             contestation d&apos;une source peut être signalée via une
@@ -104,8 +104,8 @@ export default function MethodologiePage() {
           </p>
         </section>
 
-        <section className="rounded-lg border border-neutral-200 p-4 text-sm leading-relaxed text-neutral-700 dark:border-neutral-800 dark:text-neutral-300">
-          <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-50">
+        <section className="rounded-lg border border-border p-4 text-sm leading-relaxed text-foreground/90">
+          <h2 className="text-base font-semibold text-foreground">
             Déclaration d&apos;intérêt de l&apos;auteur
           </h2>
           <p className="mt-2">

@@ -63,10 +63,10 @@ export default async function PartagePage({
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-16 text-center">
       <div className="w-full max-w-md">
-        <p className="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
+        <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
           MVP — données de test
         </p>
-        <h1 className="mt-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
+        <h1 className="mt-2 font-serif text-2xl font-medium text-foreground">
           Un résultat matcher-2027
         </h1>
 
@@ -75,24 +75,24 @@ export default async function PartagePage({
             {top3.map(({ candidate, score }, i) => (
               <li
                 key={candidate.id}
-                className="flex items-center justify-between rounded-lg border border-neutral-200 px-4 py-3 dark:border-neutral-800"
+                className="flex items-center justify-between rounded-lg border border-border px-4 py-3"
               >
-                <span className="text-sm font-medium text-neutral-900 dark:text-neutral-50">
+                <span className="text-sm font-medium text-foreground">
                   {i + 1}. {candidate.name}
                 </span>
-                <span className="text-sm font-semibold tabular-nums text-neutral-900 dark:text-neutral-50">
+                <span className="text-sm font-semibold tabular-nums text-foreground">
                   {Math.round(score)}%
                 </span>
               </li>
             ))}
           </ol>
         ) : (
-          <p className="mt-6 text-sm text-neutral-600 dark:text-neutral-400">
+          <p className="mt-6 text-sm text-muted-foreground">
             Ce lien de partage ne contient pas de résultat valide.
           </p>
         )}
 
-        <p className="mt-6 text-xs text-neutral-500 dark:text-neutral-400">
+        <p className="mt-6 text-xs text-muted-foreground">
           Ce test est un outil de comparaison, pas une recommandation de vote.
         </p>
 
@@ -105,7 +105,7 @@ export default async function PartagePage({
           </Link>
           <Link
             href="/methodologie"
-            className="text-sm text-neutral-600 underline underline-offset-4 dark:text-neutral-400"
+            className="text-sm text-muted-foreground underline underline-offset-4"
           >
             Voir la méthodologie
           </Link>
