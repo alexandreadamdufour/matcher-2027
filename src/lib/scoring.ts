@@ -24,6 +24,7 @@ export function computeAffinity(
   candidates: Candidate[],
   positions: Position[],
   theses: Thesis[],
+  categoryMultipliers?: Partial<Record<Category, number>>,
 ): CandidateResult[] {
   const thesisById = new Map(theses.map((t) => [t.id, t]));
   const confidence = theses.length > 0 ? answers.length / theses.length : 0;
@@ -46,9 +47,11 @@ export function computeAffinity(
       const thesis = thesisById.get(answer.thesis_id);
       if (!position || !thesis || answer.weight === 0) continue;
 
-      const value = affinity(answer.stance, position.stance) * answer.weight;
+      const multiplier = categoryMultipliers?.[thesis.category] ?? 1;
+      const effectiveWeight = answer.weight * multiplier;
+      const value = affinity(answer.stance, position.stance) * effectiveWeight;
       weightedSum += value;
-      totalWeight += answer.weight;
+      totalWeight += effectiveWeight;
 
       categoryWeightedSum.set(
         thesis.category,
@@ -56,7 +59,7 @@ export function computeAffinity(
       );
       categoryTotalWeight.set(
         thesis.category,
-        (categoryTotalWeight.get(thesis.category) ?? 0) + answer.weight,
+        (categoryTotalWeight.get(thesis.category) ?? 0) + effectiveWeight,
       );
       categoryAnsweredCount.set(
         thesis.category,

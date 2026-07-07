@@ -73,4 +73,34 @@ describe("computeAffinity", () => {
 
     expect(result.score).toBeCloseTo(33.33, 1);
   });
+
+  it("applies a category multiplier to re-weight the score without mutating stored answer weights", () => {
+    // t1 (Économie): user fully agrees (affinity 1). t2 (Écologie): user fully
+    // disagrees (affinity 0). Both weight 1 -> baseline score is 50%.
+    const answers: UserAnswer[] = [
+      { thesis_id: "t1", stance: 2, weight: 1 },
+      { thesis_id: "t2", stance: 2, weight: 1 },
+    ];
+
+    const [baseline] = computeAffinity(answers, candidates, positions, theses);
+    expect(baseline.score).toBeCloseTo(50);
+
+    const [ecologyIgnored] = computeAffinity(
+      answers,
+      candidates,
+      positions,
+      theses,
+      { Écologie: 0 },
+    );
+    expect(ecologyIgnored.score).toBeCloseTo(100);
+
+    const [ecologyAmplified] = computeAffinity(
+      answers,
+      candidates,
+      positions,
+      theses,
+      { Écologie: 3 },
+    );
+    expect(ecologyAmplified.score).toBeCloseTo(25);
+  });
 });
