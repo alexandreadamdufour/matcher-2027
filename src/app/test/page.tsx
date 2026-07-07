@@ -8,13 +8,11 @@ import { getPositions, getTheses } from "@/lib/content";
 import { getDiscriminatingTheses } from "@/lib/express-mode";
 import { useAnswers } from "@/lib/answers-store";
 import { CATEGORIES, type Stance, type Thesis } from "@/lib/schemas";
+import { MODE_STORAGE_KEY, START_TIME_KEY, DUO_PENDING_KEY } from "@/lib/storage-keys";
 
 const ALL_THESES = getTheses();
 const POSITIONS = getPositions();
 const EXPRESS_THESES = getDiscriminatingTheses(ALL_THESES, POSITIONS, 15);
-const MODE_STORAGE_KEY = "matcher-2027:mode";
-const START_TIME_KEY = "matcher-2027:startedAt";
-const DUO_PENDING_KEY = "matcher-2027:duoPending";
 const MIDPOINT_DELAY_MS = 2600;
 
 type Mode = "full" | "express";

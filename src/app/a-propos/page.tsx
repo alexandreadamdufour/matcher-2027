@@ -80,6 +80,54 @@ export default function AProposPage() {
           </ul>
         </section>
 
+        <section>
+          <h2 className="text-lg font-semibold text-foreground">
+            Feuille de route publique
+          </h2>
+          <ol className="mt-3 flex flex-col gap-4">
+            <li className="border-l-2 border-brand pl-4">
+              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                Été 2026 — maintenant
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-foreground/90">
+                Ossature technique du site, validée avec 4 candidats et 30
+                thèses entièrement fictifs.
+              </p>
+            </li>
+            <li className="border-l-2 border-border pl-4">
+              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                Automne 2026 — phase éditoriale
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-foreground/90">
+                Rédaction des vraies thèses et sourcing des positions des
+                candidats déclarés, exclusivement à partir de documents
+                officiels publiés (programmes, votes, déclarations
+                vérifiables).
+              </p>
+            </li>
+            <li className="border-l-2 border-border pl-4">
+              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                Avant publication
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-foreground/90">
+                Relecture par un comité indépendant de l&apos;auteur, puis
+                fenêtre de droit de réponse ouverte aux équipes de campagne
+                avant toute mise en ligne des positions.
+              </p>
+            </li>
+            <li className="border-l-2 border-border pl-4">
+              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                Lancement public
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-foreground/90">
+                Mise en ligne des vraies thèses et positions ; les données
+                fictives de cette version sont entièrement retirées, pas
+                simplement masquées.
+              </p>
+            </li>
+          </ol>
+        </section>
+
         <div className="flex flex-wrap gap-4">
           <Link
             href="/methodologie"

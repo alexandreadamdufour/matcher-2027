@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { Suspense, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { MODE_STORAGE_KEY } from "@/lib/storage-keys";
 import { RadarChart } from "@/components/RadarChart";
 import { WhatIfPanel } from "@/components/WhatIfPanel";
 import { ConvergenceMatrix } from "@/components/ConvergenceMatrix";
@@ -34,8 +35,14 @@ const DUO_NAME_KEY = "matcher-2027:duo:myName";
 
 function ResultatsContent() {
   const { answers } = useAnswers();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const isExpress = searchParams.get("mode") === "express";
+
+  function redoInFullMode() {
+    window.sessionStorage.removeItem(MODE_STORAGE_KEY);
+    router.push("/test");
+  }
   const [copyState, setCopyState] = useState<"idle" | "copied">("idle");
   const [duoCopyState, setDuoCopyState] = useState<"idle" | "copied">("idle");
   const [duoName, setDuoName] = useState("");
@@ -184,6 +191,15 @@ function ResultatsContent() {
           {THESES.length} répondue{answeredCount > 1 ? "s" : ""} (
           {Math.round(confidence * 100)}% de couverture).
         </p>
+        {isExpress && (
+          <button
+            type="button"
+            onClick={redoInFullMode}
+            className="mt-2 text-sm font-medium text-brand underline underline-offset-4"
+          >
+            Refaire en mode complet (30 thèses)
+          </button>
+        )}
 
         <ol className="mt-8 flex flex-col gap-3">
           {results.map((result, i) => {
