@@ -44,6 +44,14 @@ export type Candidate = z.infer<typeof CandidateSchema>;
 export const SourceTypeSchema = z.enum(["programme", "vote", "interview"]);
 export type SourceType = z.infer<typeof SourceTypeSchema>;
 
+export const PositionVersionSchema = z.object({
+  stance: StanceSchema,
+  source_url: z.string(),
+  source_date: z.string(),
+  note: z.string(),
+});
+export type PositionVersion = z.infer<typeof PositionVersionSchema>;
+
 export const PositionSchema = z.object({
   candidate_id: z.string(),
   thesis_id: z.string(),
@@ -52,6 +60,7 @@ export const PositionSchema = z.object({
   source_type: SourceTypeSchema,
   source_quote: z.string(),
   source_date: z.string(),
+  position_versions: z.array(PositionVersionSchema).optional(),
 });
 export type Position = z.infer<typeof PositionSchema>;
 
