@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AnswersProvider } from "@/lib/answers-store";
 import { Footer } from "@/components/Footer";
+import { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistration";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +20,13 @@ export const metadata: Metadata = {
   description:
     "Comparez vos positions à celles de candidats fictifs sur 30 thèses de la présidentielle 2027. MVP, données de test.",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
+  },
 };
 
 export const viewport: Viewport = {
@@ -40,6 +48,7 @@ export default function RootLayout({
           <div className="flex-1 flex flex-col">{children}</div>
           <Footer />
         </AnswersProvider>
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );

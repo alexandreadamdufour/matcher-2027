@@ -1,0 +1,25 @@
+{
+  "name": "matcher-2027 — Comparateur de programmes",
+  "short_name": "matcher-2027",
+  "description": "Comparez vos positions à celles de candidats fictifs sur 30 thèses de la présidentielle 2027 (MVP, données de test).",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
