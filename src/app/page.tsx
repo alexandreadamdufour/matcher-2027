@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-16">
       <div className="w-full max-w-xl">
-        <p className="mb-6 text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-500">
+        <p className="mb-6 text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
           MVP — données de test
         </p>
         <h1 className="text-3xl font-semibold leading-tight tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-4xl">
@@ -20,7 +20,7 @@ export default function Home() {
           fictifs sur {thesisCount} thèses de la présidentielle 2027,
           inspiré du Wahl-O-Mat allemand.
         </p>
-        <p className="mt-3 text-sm leading-relaxed text-neutral-500 dark:text-neutral-500">
+        <p className="mt-3 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
           Aucune donnée réelle : les candidats et leurs positions sont
           fictifs à ce stade. La collecte de vrais programmes fera l&apos;objet
           d&apos;une phase éditoriale ultérieure.

@@ -31,7 +31,7 @@ export default function SourcesPage() {
               <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
                 {candidate.name}
               </h2>
-              <p className="text-sm text-neutral-500 dark:text-neutral-500">
+              <p className="text-sm text-neutral-500 dark:text-neutral-400">
                 {candidate.party}
               </p>
               <ul className="mt-4 flex flex-col gap-4">
@@ -49,7 +49,7 @@ export default function SourcesPage() {
                       <p className="mt-1 text-neutral-600 dark:text-neutral-400">
                         « {position.source_quote} »
                       </p>
-                      <p className="mt-1 text-neutral-500 dark:text-neutral-500">
+                      <p className="mt-1 text-neutral-500 dark:text-neutral-400">
                         <a
                           href={position.source_url}
                           target="_blank"

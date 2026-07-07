@@ -114,13 +114,13 @@ export default function ResultatsPage() {
               >
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-sm text-neutral-500 dark:text-neutral-500">
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400">
                       #{i + 1}
                     </p>
                     <p className="text-base font-medium text-neutral-900 dark:text-neutral-50">
                       {candidate.name}
                     </p>
-                    <p className="text-sm text-neutral-500 dark:text-neutral-500">
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400">
                       {candidate.party}
                     </p>
                   </div>
@@ -157,7 +157,7 @@ export default function ResultatsPage() {
                           Vous : {STANCE_LABELS[answer.stance]} — {candidate.name}{" "}
                           : {STANCE_LABELS[position!.stance]}
                         </p>
-                        <p className="mt-1 text-neutral-500 dark:text-neutral-500">
+                        <p className="mt-1 text-neutral-500 dark:text-neutral-400">
                           « {position!.source_quote} »{" "}
                           <a
                             href={position!.source_url}

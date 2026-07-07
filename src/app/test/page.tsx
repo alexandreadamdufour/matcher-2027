@@ -63,7 +63,7 @@ export default function TestPage() {
       <div className="mx-auto flex w-full max-w-xl flex-1 flex-col">
         <div className="mb-8">
           <p
-            className="mb-2 text-xs text-neutral-500 dark:text-neutral-500"
+            className="mb-2 text-xs text-neutral-500 dark:text-neutral-400"
             aria-live="polite"
           >
             Thèse {index + 1} sur {THESES.length}
@@ -76,7 +76,7 @@ export default function TestPage() {
         </div>
 
         <div key={thesis.id} className="thesis-transition flex flex-1 flex-col">
-          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-500">
+          <p className="mb-3 text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
             {thesis.category}
           </p>
           <h1 className="text-2xl font-semibold leading-snug text-neutral-900 dark:text-neutral-50">
@@ -127,7 +127,7 @@ export default function TestPage() {
           <button
             type="button"
             onClick={skip}
-            className="mt-4 self-start text-sm text-neutral-500 underline underline-offset-4 hover:text-neutral-800 dark:text-neutral-500 dark:hover:text-neutral-200"
+            className="mt-4 self-start text-sm text-neutral-500 underline underline-offset-4 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200"
           >
             Passer cette thèse
           </button>

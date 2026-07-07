@@ -63,7 +63,7 @@ export default async function PartagePage({
   return (
     <main className="flex flex-1 flex-col items-center justify-center px-6 py-16 text-center">
       <div className="w-full max-w-md">
-        <p className="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-500">
+        <p className="text-xs font-medium uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
           MVP — données de test
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
@@ -92,7 +92,7 @@ export default async function PartagePage({
           </p>
         )}
 
-        <p className="mt-6 text-xs text-neutral-500 dark:text-neutral-500">
+        <p className="mt-6 text-xs text-neutral-500 dark:text-neutral-400">
           Ce test est un outil de comparaison, pas une recommandation de vote.
         </p>
 
