@@ -100,6 +100,10 @@
   .reveal-row {
     animation: reveal-row 500ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
+
+  .midpoint-transition {
+    animation: midpoint-in 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
 }
 
 @keyframes thesis-fade-in {
@@ -110,6 +114,17 @@
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes midpoint-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
