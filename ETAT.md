@@ -2,6 +2,10 @@
 
 Dernière mise à jour : 2026-07-07.
 
+- Dépôt : https://github.com/alexandreadamdufour/matcher-2027 (public)
+- Déploiement : https://matcher-2027.vercel.app (production, auto-déploiement
+  branché sur `main`)
+
 ## Fait
 
 - Scaffold Next.js 15 (App Router, TypeScript strict), Tailwind v4, shadcn/ui,
@@ -40,9 +44,6 @@ Dernière mise à jour : 2026-07-07.
 - **Phase éditoriale réelle** (hors scope de ce sprint) : remplacer les 4
   candidats et les 30 thèses fictifs par de vraies thèses et de vraies
   positions sourcées de candidats déclarés, avec revue multi-relecteurs.
-- Créer le dépôt GitHub public et pousser le code (`gh repo create`).
-- Déployer sur Vercel et vérifier le build en production (notamment la route
-  `/api/og` en edge runtime).
 - Vérification manuelle de l'UI en conditions réelles (mobile 375px,
   clavier, lecteur d'écran) — non effectuée dans cette session sur demande
   explicite de l'utilisateur (tests limités au build et aux tests
