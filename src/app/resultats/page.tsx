@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { RadarChart } from "@/components/RadarChart";
 import { useAnswers } from "@/lib/answers-store";
 import { getCandidates, getPositions, getPosition, getTheses } from "@/lib/content";
@@ -29,6 +29,7 @@ const POSITIONS = getPositions();
 
 export default function ResultatsPage() {
   const { answers } = useAnswers();
+  const [copyState, setCopyState] = useState<"idle" | "copied">("idle");
 
   const results = useMemo(
     () =>
@@ -37,6 +38,18 @@ export default function ResultatsPage() {
       ),
     [answers],
   );
+
+  async function shareTop3() {
+    const params = new URLSearchParams();
+    results.slice(0, 3).forEach((r, i) => {
+      params.set(`c${i + 1}`, r.candidate_id);
+      params.set(`s${i + 1}`, String(Math.round(r.score)));
+    });
+    const url = `${window.location.origin}/partage?${params.toString()}`;
+    await navigator.clipboard.writeText(url);
+    setCopyState("copied");
+    setTimeout(() => setCopyState("idle"), 2000);
+  }
 
   if (answers.length === 0) {
     return (
@@ -174,7 +187,16 @@ export default function ResultatsPage() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-4">
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            onClick={shareTop3}
+            className="rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white dark:border-neutral-700 dark:text-neutral-50 dark:hover:bg-neutral-50 dark:hover:text-neutral-900"
+          >
+            {copyState === "copied"
+              ? "Lien copié !"
+              : "Copier le lien de partage (top 3)"}
+          </button>
           <Link
             href="/test"
             className="text-sm font-medium underline underline-offset-4"
