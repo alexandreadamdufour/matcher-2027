@@ -49,6 +49,21 @@ function ResultatsContent() {
 
   const revealedCount = useStaggeredReveal(results.length, REVEAL_STEP_MS);
 
+  const [selectedIds, setSelectedIds] = useState<string[]>(() =>
+    results.slice(0, 3).map((r) => r.candidate_id),
+  );
+
+  function toggleCandidate(id: string) {
+    setSelectedIds((prev) => {
+      if (prev.includes(id)) {
+        if (prev.length === 1) return prev;
+        return prev.filter((x) => x !== id);
+      }
+      if (prev.length >= 3) return prev;
+      return [...prev, id];
+    });
+  }
+
   async function shareTop3() {
     const params = new URLSearchParams();
     results.slice(0, 3).forEach((r, i) => {
@@ -80,16 +95,18 @@ function ResultatsContent() {
   const confidence = results[0]?.confidence ?? 0;
   const answeredCount = answers.length;
 
-  const radarSeries = results.map((r) => ({
-    id: r.candidate_id,
-    label:
-      CANDIDATES.find((c) => c.id === r.candidate_id)?.name ?? r.candidate_id,
-    color: candidateColor(r.candidate_id),
-    values: CATEGORIES.map(
-      (category) =>
-        r.categoryScores.find((cs) => cs.category === category)?.score ?? 0,
-    ),
-  }));
+  const radarSeries = results
+    .filter((r) => selectedIds.includes(r.candidate_id))
+    .map((r) => ({
+      id: r.candidate_id,
+      label:
+        CANDIDATES.find((c) => c.id === r.candidate_id)?.name ?? r.candidate_id,
+      color: candidateColor(r.candidate_id),
+      values: CATEGORIES.map(
+        (category) =>
+          r.categoryScores.find((cs) => cs.category === category)?.score ?? 0,
+      ),
+    }));
 
   return (
     <main className="flex flex-1 flex-col px-6 py-10">
@@ -133,8 +150,40 @@ function ResultatsContent() {
 
         <div className="mt-10">
           <h2 className="text-lg font-semibold text-foreground">
-            Radar par catégorie
+            Radar comparatif par catégorie
           </h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Choisissez de 1 à 3 candidats à superposer.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {results.map((r) => {
+              const candidate = CANDIDATES.find((c) => c.id === r.candidate_id);
+              if (!candidate) return null;
+              const selected = selectedIds.includes(r.candidate_id);
+              const color = candidateColor(r.candidate_id);
+              return (
+                <button
+                  key={r.candidate_id}
+                  type="button"
+                  onClick={() => toggleCandidate(r.candidate_id)}
+                  aria-pressed={selected}
+                  className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition-colors"
+                  style={{
+                    borderColor: selected ? color : "var(--border)",
+                    color: selected ? color : "var(--muted-foreground)",
+                    backgroundColor: selected ? `${color}14` : "transparent",
+                  }}
+                >
+                  <span
+                    aria-hidden
+                    className="inline-block size-2 rounded-full"
+                    style={{ backgroundColor: color }}
+                  />
+                  {candidate.name}
+                </button>
+              );
+            })}
+          </div>
           <div className="mt-4">
             <RadarChart axes={[...CATEGORIES]} series={radarSeries} />
           </div>

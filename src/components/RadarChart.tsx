@@ -53,7 +53,7 @@ export function RadarChart({ axes, series, size = 280 }: RadarChartProps) {
               points={pts}
               fill="none"
               stroke="currentColor"
-              className="text-neutral-200 dark:text-neutral-800"
+              className="text-border"
               strokeWidth={1}
             />
           );
@@ -69,7 +69,7 @@ export function RadarChart({ axes, series, size = 280 }: RadarChartProps) {
               x2={p.x}
               y2={p.y}
               stroke="currentColor"
-              className="text-neutral-200 dark:text-neutral-800"
+              className="text-border"
               strokeWidth={1}
             />
           );
@@ -99,6 +99,30 @@ export function RadarChart({ axes, series, size = 280 }: RadarChartProps) {
           );
         })}
 
+        {series.map((s) =>
+          s.values.map((v, i) => {
+            const p = pointOnAxis(
+              i,
+              axes.length,
+              (Math.max(0, Math.min(100, v)) / 100) * maxRadius,
+              center,
+            );
+            return (
+              <circle
+                key={`${s.id}-${i}`}
+                cx={p.x}
+                cy={p.y}
+                r={3}
+                fill={s.color}
+              >
+                <title>
+                  {s.label} — {axes[i]} : {Math.round(v)}%
+                </title>
+              </circle>
+            );
+          }),
+        )}
+
         {axes.map((label, i) => {
           const p = pointOnAxis(i, axes.length, maxRadius + 22, center);
           return (
@@ -108,14 +132,14 @@ export function RadarChart({ axes, series, size = 280 }: RadarChartProps) {
               y={p.y}
               textAnchor="middle"
               dominantBaseline="middle"
-              className="fill-neutral-600 text-[10px] dark:fill-neutral-400"
+              className="fill-muted-foreground text-[10px]"
             >
               {label}
             </text>
           );
         })}
       </svg>
-      <figcaption className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-neutral-600 dark:text-neutral-400">
+      <figcaption className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
         {series.map((s) => (
           <span key={s.id} className="inline-flex items-center gap-1.5">
             <span
