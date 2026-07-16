@@ -36,8 +36,8 @@ Bildung), adaptées au contexte français.
    ou de politique étrangère française, pertinents pour une élection présidentielle — pas sur
    des sujets locaux ou de gestion administrative fine.
 
-7. **Répartition par catégorie.** Les thèses sont réparties en 6 catégories (Économie,
-   International, Écologie, Institutions, Société, Éducation) avec un nombre équilibré de
+7. **Répartition par catégorie.** Les thèses sont réparties en 6 catégories (Écologie,
+   Économie, Éducation, Institutions, International, Société) avec un nombre équilibré de
    thèses par catégorie, pour éviter qu'une thématique ne domine le résultat.
 
 ## Processus de relecture

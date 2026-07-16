@@ -1,12 +1,12 @@
 import { z } from "zod";
 
 export const CATEGORIES = [
-  "Économie",
-  "International",
   "Écologie",
-  "Institutions",
-  "Société",
+  "Économie",
   "Éducation",
+  "Institutions",
+  "International",
+  "Société",
 ] as const;
 
 export const CategorySchema = z.enum(CATEGORIES);
